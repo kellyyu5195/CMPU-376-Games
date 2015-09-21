@@ -3,7 +3,7 @@ using System.Collections;
 
 public class PlayerMovement : MonoBehaviour {
 
-	public float speed = 1f;
+	public float speed = 5f;
 
 	Rigidbody playerRB;
 	float movement;
