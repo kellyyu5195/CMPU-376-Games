@@ -4,12 +4,13 @@ using System.Collections;
 
 public class PlayerAnxietyMeter : MonoBehaviour {
 
-	public float startingAnxiety;
-	public float currentAnxiety;
-	public float startingFriends;
-	public float currentFriends;
 	public Slider anxietySlider;
 	public Slider friendSlider;
+	float startingAnxiety = 5f;
+	float currentAnxiety;
+	float startingFriends = 0f;
+	float currentFriends;
+
 
 	void Awake ()
 	{
