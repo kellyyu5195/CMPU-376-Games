@@ -28,7 +28,6 @@ public class PlayerNPCInteraction : MonoBehaviour {
 		if (other.tag == "Player") {
 			playerMovement.enabled = false;
 			anim.SetTrigger ("Interact");
-			doSliderThings();
 		}
 		playerMovement.enabled = true;
 	}
@@ -38,11 +37,14 @@ public class PlayerNPCInteraction : MonoBehaviour {
 		if (Input.GetKey (KeyCode.C)) {
 			friendAmt = 0f;
 			anxietyAmt = 1f;
+			anim.SetTrigger("Back");
+			doSliderThings();
 		} else {
 			if (Input.GetKey (KeyCode.A) || Input.GetKey (KeyCode.B)) {
 				friendAmt = Random.Range (0, 2) % 2;
 				anim.SetTrigger ("Back");
 				anxietyAmt = Random.Range (-1, 1);
+				doSliderThings();
 			} else {
 				friendAmt = 0f;
 				anxietyAmt = 0f;
