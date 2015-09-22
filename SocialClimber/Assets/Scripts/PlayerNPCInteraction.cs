@@ -8,6 +8,7 @@ public class PlayerNPCInteraction : MonoBehaviour {
 	GameObject HUDCanvas;
 	PlayerMovement playerMovement;
 	PlayerAnxietyMeter playerAnxiety;
+	int thing;
 	float friendAmt;
 	float anxietyAmt;
 
@@ -28,6 +29,7 @@ public class PlayerNPCInteraction : MonoBehaviour {
 		if (other.tag == "Player") {
 			playerMovement.enabled = false;
 			anim.SetTrigger ("Interact");
+			doSliderThings();
 		}
 		playerMovement.enabled = true;
 	}
@@ -35,24 +37,31 @@ public class PlayerNPCInteraction : MonoBehaviour {
 
 	void setAmts() {
 		if (Input.GetKey (KeyCode.C)) {
-			friendAmt = 0f;
-			anxietyAmt = 1f;
-			anim.SetTrigger("Back");
-			doSliderThings();
+			thing = 0;
 		} else {
 			if (Input.GetKey (KeyCode.A) || Input.GetKey (KeyCode.B)) {
-				friendAmt = Random.Range (0, 2) % 2;
-				anim.SetTrigger ("Back");
-				anxietyAmt = Random.Range (-1, 1);
-				doSliderThings();
+				thing = 1;
 			} else {
-				friendAmt = 0f;
-				anxietyAmt = 0f;
+				thing = 2;
 			}
 		}
 	}
 
 	void doSliderThings () {
+		switch (thing) {
+		case 0:
+			friendAmt = 0f;
+			anxietyAmt = 1f;
+			break;
+		case 1:
+			friendAmt = Random.Range (0, 1);
+			anxietyAmt = Random.Range (-1, 1);
+			break;
+		case 2:
+			friendAmt = 0f;
+			anxietyAmt = 0f;
+			break;
+		}
 		playerAnxiety.TakeFriends (friendAmt);
 		playerAnxiety.TakeAnxiety (anxietyAmt);
 	}

@@ -6,7 +6,7 @@ public class PlayerAnxietyMeter : MonoBehaviour {
 
 	public Slider anxietySlider;
 	public Slider friendSlider;
-	float startingAnxiety = 5f;
+	float startingAnxiety = 50f;
 	float currentAnxiety;
 	float startingFriends = 0f;
 	float currentFriends;
