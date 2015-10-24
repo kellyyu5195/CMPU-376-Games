@@ -6,16 +6,31 @@ public class PlayerAnxietyMeter : MonoBehaviour {
 
 	public Slider anxietySlider;
 	public Slider friendSlider;
-	float startingAnxiety = 5f;
+	float startingAnxiety = 50f;
 	float currentAnxiety;
 	float startingFriends = 0f;
 	float currentFriends;
-
+	GameObject HUDCanvas;
+	Animator anim;
+	GameObject player;
 
 	void Awake ()
 	{
+		HUDCanvas = GameObject.FindGameObjectWithTag ("HUDCanvas");
+		anim = HUDCanvas.GetComponent<Animator> ();
 		currentAnxiety = startingAnxiety;
 		currentFriends = startingFriends;
+	}
+
+	public void Update() {
+		if (currentAnxiety >= 100) {
+			anim.SetTrigger ("GameObver");
+			TakeAnxiety(-100);
+		}
+		if (currentFriends >= 100) {
+			anim.SetTrigger ("Win");
+			TakeAnxiety(-100);
+		}
 	}
 
 
@@ -29,6 +44,7 @@ public class PlayerAnxietyMeter : MonoBehaviour {
 	{
 		currentFriends += amount;
 		friendSlider.value = currentFriends;
+
 	}
       
 }
