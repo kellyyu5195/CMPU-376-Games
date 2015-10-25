@@ -21,4 +21,5 @@ public class CharacterMovement : MonoBehaviour {
 		Vector2 movement = new Vector2 (moveHorizontal, moveVertical);
 		playerRB.velocity = movement * speed;
 	}
+
 }
