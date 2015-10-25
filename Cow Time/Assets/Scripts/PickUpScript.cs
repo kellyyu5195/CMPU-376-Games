@@ -3,11 +3,17 @@ using System.Collections;
 
 public class PickUpScript : MonoBehaviour {
 
+	Health playerLove;
+	
+	void Start() {
+		playerLove = this.GetComponent<Health> ();
+	}
 	// if you collide with an object called "PickUp",
 	// destroy the game object
-	void OnTriggerEnter (Collider other) {
-		if (other.tag == "Player") {
-			Destroy (this.gameObject);
+	void OnCollisionEnter2D (Collision2D other) {
+		if (other.gameObject.tag == "PickUp") {
+			Destroy (other.gameObject);
+			playerLove.pickUp = true;
 		}
 	}
 
