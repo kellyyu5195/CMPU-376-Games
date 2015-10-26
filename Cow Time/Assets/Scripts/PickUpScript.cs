@@ -3,11 +3,8 @@ using System.Collections;
 
 public class PickUpScript : MonoBehaviour {
 
-	Health playerLove;
-	
-	void Start() {
-		playerLove = this.GetComponent<Health> ();
-	}
+	public Health playerLove;
+
 	// if you collide with an object called "PickUp",
 	// destroy the game object
 	void OnCollisionEnter2D (Collision2D other) {
