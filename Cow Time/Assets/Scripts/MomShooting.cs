@@ -13,7 +13,7 @@ public class MomShooting : MonoBehaviour {
 
 	void Update() {
 		timer++;
-		if (timer == 500) {
+		if (timer == 200) {
 			Instantiate(bullet, transform.position, Quaternion.identity);
 			timer = 0;
 		}

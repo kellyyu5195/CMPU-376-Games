@@ -23,7 +23,7 @@ public class Health : MonoBehaviour {
 			pickUp = false;
 			heartAnim.SetInteger("UpOrDown", love);
 		} else {
-			if (timer == 10000) {
+			if (timer == 5000) {
 				love --;
 				timer = 0;
 				heartAnim.SetInteger("UpOrDown", -1);
