@@ -21,13 +21,12 @@ public class Health : MonoBehaviour {
 		if (pickUp) {
 			love ++;
 			pickUp = false;
-			Debug.Log(love);
-			heartAnim.SetInteger("Int1", love);
+			heartAnim.SetInteger("UpOrDown", love);
 		} else {
 			if (timer == 10000) {
 				love --;
 				timer = 0;
-				Debug.Log(love);
+				heartAnim.SetInteger("UpOrDown", -1);
 			}
 		}
 	}
