@@ -14,12 +14,13 @@ public class MomMovement : MonoBehaviour {
 	void Start () {
 		playerTransform = player.GetComponent<Transform> ();
 		momTransform = GetComponent<Transform> ();
+		speed = 0.05f;
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate () {
 		Vector3 playerPos = playerTransform.position;
 		Vector3 targ = new Vector3 (playerPos.x - 15, playerPos.y, playerPos.z);
-		momTransform.position = Vector3.MoveTowards(momTransform.position, targ, 0.05f);
+		momTransform.position = Vector3.MoveTowards(momTransform.position, targ, speed);
 	}
 }

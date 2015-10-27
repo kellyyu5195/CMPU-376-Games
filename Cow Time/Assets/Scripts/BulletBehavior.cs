@@ -51,7 +51,7 @@ public class BulletBehavior : MonoBehaviour {
 			boyTrans.position = new Vector2 (boyTrans.position.x, boyTrans.position.y - 5);
 		}
 
-		if (col.gameObject.tag == "Wall") {
+		if (col.gameObject.tag == "Wall" || col.gameObject.tag == "PickUp") {
 			Destroy (this.gameObject);
 		}
 	}

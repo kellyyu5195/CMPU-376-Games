@@ -19,7 +19,7 @@ public class Health : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		love = 3;
+		love = 15;
 		pickUp = false;
 		timer = 0;
 
@@ -36,6 +36,7 @@ public class Health : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (timer == 0) {
+			heartAnim.SetInteger("UpOrDown", 0);
 			if (love == 0) {
 				Destroy (boy.gameObject);
 				Destroy (this.gameObject);
@@ -43,6 +44,7 @@ public class Health : MonoBehaviour {
 				playerRB.velocity= new Vector2 (0,0);
 				momMove.enabled = false;
 				playerMove.enabled = false;
+				momShoot.enabled = false;
 			}
 		}
 
@@ -51,15 +53,17 @@ public class Health : MonoBehaviour {
 		if (pickUp) {
 			love ++;
 			pickUp = false;
-			heartAnim.SetInteger ("UpOrDown", love);
+			heartAnim.SetInteger ("UpOrDown", love/5);
+			momMove.speed += 0.01f;
 		}
 
 		if (timer == 300) {
 			love --;
 			timer = 0;				
 			heartAnim.SetInteger("UpOrDown", -1);
-
 		}
+
+
 	}
 
 }
