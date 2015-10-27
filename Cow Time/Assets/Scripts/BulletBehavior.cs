@@ -3,9 +3,10 @@ using System.Collections;
 
 public class BulletBehavior : MonoBehaviour {
 
+	public GameObject milkyWay;
+
 	Rigidbody2D rb;
 	GameObject heart;
-	GameObject boy;
 	GameObject mom;
 	Transform momTransform;
 	GameObject player;
@@ -14,6 +15,9 @@ public class BulletBehavior : MonoBehaviour {
 	CharacterMovement charMove;
 	MomShooting momShooting;
 	Rigidbody2D playerRB;
+	GameObject boy;
+	Transform boyTrans;
+
 
 	// Use this for initialization
 	void Start () {
@@ -21,27 +25,34 @@ public class BulletBehavior : MonoBehaviour {
 		rb.velocity = new Vector2(10, 0);
 
 		heart = GameObject.FindGameObjectWithTag ("heart");
-		boy = GameObject.FindGameObjectWithTag ("boy");
 
 		mom = GameObject.FindGameObjectWithTag ("mom");
 		momTransform = mom.GetComponent<Transform> ();
-		momMovement = mom.GetComponent<MomMovement> ();
 		momShooting = mom.GetComponent<MomShooting> ();
 
 		player = GameObject.FindGameObjectWithTag ("Player");
 		playerTransform = player.GetComponent<Transform> ();
 		charMove = player.GetComponent<CharacterMovement> ();
+		playerRB = player.GetComponent<Rigidbody2D> ();
+
+		boy = GameObject.FindGameObjectWithTag ("boy");
+		boyTrans = boy.GetComponent<Transform> ();
 	}
 
 	void OnCollisionEnter2D (Collision2D col) {
 		if (col.gameObject.tag == "Player") {
 			Destroy (heart);
-			Destroy (boy);
 			Destroy (this.gameObject);
-			momTransform.position = playerTransform.position;
-			momMovement.enabled = false;
+			playerRB.velocity = new Vector2 (0, 0);
 			charMove.enabled = false;
 			momShooting.enabled = false;
+			Vector2 milkyWayLoc = new Vector2(playerTransform.position.x, playerTransform.position.y - 2);
+			Instantiate (milkyWay, milkyWayLoc, Quaternion.identity);
+			boyTrans.position = new Vector2 (boyTrans.position.x, boyTrans.position.y - 5);
+		}
+
+		if (col.gameObject.tag == "Wall") {
+			Destroy (this.gameObject);
 		}
 	}
 }
