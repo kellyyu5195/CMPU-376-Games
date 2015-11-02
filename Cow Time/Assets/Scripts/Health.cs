@@ -55,6 +55,7 @@ public class Health : MonoBehaviour {
 			pickUp = false;
 			heartAnim.SetInteger ("UpOrDown", love/5);
 			momMove.speed += 0.01f;
+			timer = 0;
 		}
 
 		if (timer == 300) {
