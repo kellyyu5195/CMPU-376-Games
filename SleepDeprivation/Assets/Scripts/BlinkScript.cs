@@ -5,7 +5,7 @@ public class BlinkScript : MonoBehaviour {
 
 	Animator blinkAnim;
 	int timer;
-	int time = 300;
+	int time = 400;
 
 	void Start() {
 		blinkAnim = GetComponent<Animator> ();

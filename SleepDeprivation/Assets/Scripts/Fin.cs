@@ -1,18 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
-//using UnityEngine.SceneManagement;
 
 public class Fin : MonoBehaviour {
 
-	// Use this for initialization
-//	void Start () {
+	public int count = 0;
+	public int sceneNum;
 	
-//	}
-//	public static void LoadScene(string sceneName, SceneManagement.LoadSceneMode mode = LoadSceneMode.Single);
-	// Update is called once per frame
-//	void Update () {
-//		if (Input.GetKey(KeyCode.Alpha0) {
-//		}
-
-//	}
+	void Update() {
+		if (count == 5) {
+			Application.LoadLevel (sceneNum);
+		}
+	}
 }
