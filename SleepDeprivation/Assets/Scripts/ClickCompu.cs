@@ -3,13 +3,14 @@ using System.Collections;
 
 public class ClickCompu : MonoBehaviour {
 	
-	public float range = 10000.0f;
+	public float range = 100000.0f;
 	
 	Ray shootRay;
 	int shootableMask;
 	float smallDiff = 0.01f;
 	Animator anim;
 	public Canvas HUDCanvas;
+	public Camera thing;
 	
 	void Awake ()
 	{
@@ -18,10 +19,10 @@ public class ClickCompu : MonoBehaviour {
 	}
 	
 	
-	void FixedUpdate ()
+	void Update ()
 	{	
 		if (Input.GetButton ("Fire1")) {
-			shootRay = Camera.main.ScreenPointToRay (Input.mousePosition);
+			shootRay = thing.ScreenPointToRay (Input.mousePosition);
 			RaycastHit shootHit;
 			if (Physics.Raycast (shootRay, out shootHit, range, shootableMask)) {
 				if (shootHit.collider.tag == "Screen") {
